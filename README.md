@@ -4,7 +4,7 @@
   Create a simple GUI word lookup program that includes auto-complete, spell-check, and stores a list of past looked up words. The word     look up, spell-check, and auto-complete will use a tree-like data structure known as a trie. Previously looked up words will be stored     using a linked list.
   
 # Tools/Methods:
-  Done using Qt: https://www.qt.io/
+  Done using Qt: https://www.qt.io/ \n
   Using a trie for lookup, auto-complete, and spell check: https://en.wikipedia.org/wiki/Trie
   
 # Proposed User Flow:
