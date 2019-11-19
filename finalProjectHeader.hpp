@@ -18,7 +18,7 @@ struct node{
     this->adj[0] = NULL;
   }
   char c;
-  vector<adjChar> adj;
+  vector<adjNode> adj;
   node* parent;
   int searchCount;
   bool terminal;
