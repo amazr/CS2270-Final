@@ -1,8 +1,7 @@
 #include <iostream>
 
 struct Node {
-    static const int alphabet_size = 26;
-    Node *adjLetters[alphabet_size];            //This is actually meant to be a hash map of pointers.
+    Node *adjLetters[25] = {};
     bool isWord;
 };
 
