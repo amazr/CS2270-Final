@@ -17,16 +17,21 @@ int main() {
     }
 
     std::string line;
-    std::cout << "adding words...\n";
+    std::cout << "adding words...";
     while(getline(ifs, line)) {
+        line.erase(line.length() - 1);  //This erases a carriage return... keep checking if this is needed once the file changes
         trie.addWord(line);
     }
+    std::cout << " DONE\n";
     while(true) {
         std::string search;   
-        std::cout << "done!\nLook for a word: \n";
+        std::cout << "\nLook for a word: ";
         std::cin >> search;
-        if (search == "123") return 0;
         if (trie.findWord(search)) std::cout << "FOUND!\n";
-        else std::cout << "NOT FOUND!\n";
+        else {
+            trie.createSuggestionList(search);
+            trie.printSuggestionList();
+        }
     }
+
 }
