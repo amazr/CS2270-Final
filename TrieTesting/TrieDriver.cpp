@@ -28,10 +28,9 @@ int main() {
         std::cout << "\nLook for a word: ";
         std::cin >> search;
         if (trie.findWord(search)) std::cout << "FOUND!\n";
-        else {
-            trie.createSuggestionList(search);
-            trie.printSuggestionList();
-        }
+        else std::cout << "NOT FOUND\n";
+        trie.createSuggestionList(search);
+        trie.printSuggestionList();
     }
 
 }

@@ -19,6 +19,7 @@ char intToChar(int key) {
 //Constructor:  ALSO start of Trie functions
 Trie::Trie() {
     root = new Node();
+    numberOfSuggestions = 10;
 }
 
 //Destructor: 
@@ -105,26 +106,28 @@ void Trie::createSuggestionList(std::string input) {
         }
         break;
     }
-    std::cout << "Suggestions from " << rootSuggestion << ": \n";
+
     suggestionSetCrawler = 0;
-    suggestionList.push_back(rootSuggestion);
+    currentSuggestion = rootSuggestion;
     fillSuggestionList(temp);
 }
 
 //Make this just return all the way when a word is found, and loop through calling this in the parent function!
 void Trie::fillSuggestionList(Node *temp) {
-    //SOMETHING IS NOT CORRECT HERE AND THAT IS NOT OKAY!
-    if (temp->terminalLetter == true && suggestionList.size() <= 5) {
+    
+    if (temp->terminalLetter == true && suggestionList.size() <= (numberOfSuggestions - 1) && currentSuggestion != rootSuggestion) {
         suggestionSetCrawler++;
-        suggestionList.push_back(rootSuggestion);
+        suggestionList.push_back(currentSuggestion);
     }
+
     for (int i = 0; i < 26; i++) {
-        if (suggestionList.size() > 5) return;
+        if (suggestionList.size() > (numberOfSuggestions - 1)) return;
         if (temp->adjLetters[i] != NULL) {
-            suggestionList.at(suggestionSetCrawler) += intToChar(i);
+            currentSuggestion += intToChar(i);
             fillSuggestionList(temp->adjLetters[i]);
         }
     }
+    currentSuggestion.pop_back();
 }
 
 

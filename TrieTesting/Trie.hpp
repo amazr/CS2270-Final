@@ -26,4 +26,5 @@ class Trie {
         int stackLevel;
         bool wordJustAdded;
         void fillSuggestionList(Node *currNode);        //Takes a current node and creates a list of suggestions from a word. Called by createSuggestionList.
+        int numberOfSuggestions;
 };
