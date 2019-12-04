@@ -112,7 +112,7 @@ void Trie::createSuggestionList(std::string input) {
     fillSuggestionList(temp);
 }
 
-//Make this just return all the way when a word is found, and loop through calling this in the parent function!
+//This recursive functions works by filling a vector with words as it traverses the entire trie. It will stop at a predetermined number of words. 
 void Trie::fillSuggestionList(Node *temp) {
     
     if (temp->terminalLetter == true && suggestionList.size() <= (numberOfSuggestions - 1) && currentSuggestion != rootSuggestion) {
