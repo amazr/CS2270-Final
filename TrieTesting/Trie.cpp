@@ -27,6 +27,36 @@ Trie::~Trie() {
     destroy(root);
 }
 
+bool Trie::createTrieFromFile(std::string fileName) {
+    std::ifstream ifs;
+    ifs.open(fileName);
+    
+    if (!ifs.is_open()) return false;
+
+    std::string line;
+    std::string word;
+    std::string definition;
+    while(getline(ifs, line)) {
+        if (line.size() == 0) continue;
+        line.erase(line.length() - 1);
+        for (int i = 0; i < line.size(); i++) {
+            if (i >= 1) {
+                if (line[i] == ' ' && line[i - 1] == ' ') {
+                    definition = line.substr(i + 1, line.size() + 1);
+                    break;
+                }
+            }
+            word += line[i];
+        }
+        if (word.size() == 0) continue;
+        word.erase(word.length()-1);
+        addWord(word,definition);
+        word = "";
+        definition = "";
+    }  
+    return true;
+}
+
 //Returns an int 0 - 25, wether it is caps or not, of a char. Used to find the index in the adj hash map
 //WARNING: If passed a non-letter, letterHasher will return a value outside 0-25, which can cause a seg fault
 int Trie::letterHasher(char letter) {
@@ -35,7 +65,7 @@ int Trie::letterHasher(char letter) {
 }
 
 //Adds a word to the trie
-void Trie::addWord(std::string input) {
+void Trie::addWord(std::string input, std::string definition) {
     Node *temp = root;
     int key = 0;
     int size = input.size();
@@ -48,6 +78,7 @@ void Trie::addWord(std::string input) {
         temp = temp->adjLetters[key];
     }
     temp->terminalLetter = true;
+    temp->definition = definition;
 }
 
 //Returns true if a given word is in the tree, false if it was not
@@ -63,7 +94,10 @@ bool Trie::findWord(std::string input) {
 
         temp = temp->adjLetters[key];
     }
-    if (temp->terminalLetter) return true;
+    if (temp->terminalLetter) {
+        std::cout << "Definition: " << temp->definition << "\n";
+        return true;
+    }
     return false;
 }
 

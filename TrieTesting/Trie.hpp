@@ -1,17 +1,21 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 struct Node {
     Node *adjLetters[26] = {};
     bool terminalLetter = false;
+    std::string definition;
 };
 
 class Trie {
     public:
         Trie();
         ~Trie();
+        bool createTrieFromFile(std::string fileName);  //Creates a trie from a given dictionary file
         int letterHasher(char letter);          //CAP letter ascii - 65 = index in adjacent array
-        void addWord(std::string input);        //Add's a word to the trie, no duplicates
+        void addWord(std::string input, std::string definition);        //Add's a word to the trie, no duplicates
         bool findWord(std::string input);       //Searches for a word in the trie
         bool isChildless(Node *temp);           //Checks if the given node has children. Returns false if it has children.
         void printSuggestionList();             //prints the current list of suggested words.

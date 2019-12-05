@@ -1,34 +1,23 @@
 #include "Trie.hpp"
 #include <iostream>
-#include <fstream>
-#include <sstream>
 
+//https://raw.githubusercontent.com/sujithps/Dictionary/master/Oxford%20English%20Dictionary.txt
 
 int main() {
     Trie trie;
-    std::string dictionary = "../dictionary/words_alpha.txt";
-    
-    std::ifstream ifs;
-    ifs.open(dictionary);
+    std::string dictionary = "../dictionary/OxfordDictionary.txt";
+    bool worked = trie.createTrieFromFile(dictionary);
 
-    if (!ifs.is_open()) {
-        std::cout << "Failed to open the file." << std::endl;
+    if (!worked) {
+        std::cout << "There was an error loading the dictionary file\n";
         return 0;
     }
 
-    std::string line;
-    std::cout << "adding words...";
-    while(getline(ifs, line)) {
-        line.erase(line.length() - 1);  //This erases a carriage return... keep checking if this is needed once the file changes
-        trie.addWord(line);
-    }
-    std::cout << " DONE\n";
     while(true) {
         std::string search;   
         std::cout << "\nLook for a word: ";
         std::cin >> search;
-        if (trie.findWord(search)) std::cout << "FOUND!\n";
-        else std::cout << "NOT FOUND\n";
+        if (!trie.findWord(search)) std::cout << "Not Found!\n";
         trie.createSuggestionList(search);
         trie.printSuggestionList();
     }
