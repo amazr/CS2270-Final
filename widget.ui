@@ -6,38 +6,71 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>423</width>
-    <height>505</height>
+    <width>648</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QWidget" name="formLayoutWidget">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>20</y>
-     <width>401</width>
-     <height>481</height>
+     <y>10</y>
+     <width>631</width>
+     <height>281</height>
     </rect>
    </property>
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+     </layout>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>View Previous Words</string>
-      </property>
-     </widget>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="button1">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button2">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button3">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button4">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button5">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item row="2" column="1">
-     <widget class="QListView" name="listView"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QListView" name="listView_2"/>
+    <item>
+     <widget class="QTextEdit" name="definitionBox"/>
     </item>
    </layout>
   </widget>
