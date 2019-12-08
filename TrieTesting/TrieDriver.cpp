@@ -5,7 +5,7 @@
 
 int main() {
     Trie trie;
-    std::string dictionary = "../dictionary/OxfordDictionary.txt";
+    std::string dictionary = "../dictionary/ofd.txt";
     bool worked = trie.createTrieFromFile(dictionary);
 
     if (!worked) {

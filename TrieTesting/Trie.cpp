@@ -38,7 +38,7 @@ bool Trie::createTrieFromFile(std::string fileName) {
     std::string definition;
     while(getline(ifs, line)) {
         if (line.size() == 0) continue;
-        line.erase(line.length() - 1);
+        line.erase(line.length());
         for (int i = 0; i < line.size(); i++) {
             if (i >= 1) {
                 if (line[i] == ' ' && line[i - 1] == ' ') {
